@@ -8,10 +8,14 @@ fi
 
 if [ $1 == '-d' ]
    then
-     sh ./disable-anim.sh
+     adb shell settings put global window_animation_scale 0
+     adb shell settings put global transition_animation_scale 0
+     adb shell settings put global animator_duration_scale 0
  elif [ $1 = '-e' ]
      then
-     sh ./enable-anim.sh    
+      adb shell settings put global window_animation_scale 1
+      adb shell settings put global transition_animation_scale 1
+      adb shell settings put global animator_duration_scale 1
  else
    echo "No arguments supplied. Please use -d for disabling or -e for enabling"
 fi
